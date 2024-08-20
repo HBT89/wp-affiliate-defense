@@ -1,0 +1,36 @@
+### **Affiliate Defense Plugin: How to Use Guide**
+
+Welcome to Affiliate Defense! This guide will help you navigate through the current features of the Affiliate Defense plugin within your WordPress admin area.
+
+#### **Step 1: Log in to Your WordPress Admin Dashboard**
+- Open your web browser and go to your WordPress admin URL (typically `yourdomain.com/wp-admin`).
+- Enter your username and password to log in.
+
+#### **Step 2: Make Changes to Posts or Pages**
+- Affiliate Defense works by monitoring the changes you make to affiliate links within your posts and pages.
+- To begin, create or edit a post or page that contains affiliate links.
+  - To do this, navigate to `Posts > Add New` or `Pages > Add New` or edit an existing post/page by going to `Posts > All Posts` or `Pages > All Pages` and selecting the one you want to modify.
+
+#### **Step 3: Save Your Changes**
+- After editing or adding an affiliate link in your post or page, click the `Update` or `Publish` button to save your changes.
+- The Affiliate Defense plugin will automatically check for any changes made to the affiliate links in the content.
+
+#### **Step 4: Check for Alerts in the Admin Dashboard**
+- Once changes are saved, Affiliate Defense will display an alert at the top of your WordPress admin dashboard if any modifications to affiliate links were detected.
+- The alert will appear as an admin notice and may say something like “Changes detected in affiliate links on [Post/Page Title].”
+- These notices will give you a quick heads-up that something has been altered in your affiliate links.
+
+#### **Step 5: Reviewing Alerts**
+- The plugin’s alerts are visible only when you're on the admin pages after saving changes.
+- If you see an alert, you can click on the post/page title in your list of posts or pages to review the changes you made.
+- Unfortunately, the plugin does not keep a log or history of these alerts, so once you navigate away, the alert won't be stored for future reference.
+
+### **Limitations**
+- Currently, the Affiliate Defense plugin does not have a dedicated dashboard or settings page.
+- Alerts are only displayed as temporary admin notices and do not persist beyond the current session.
+- There are no email notifications or advanced reports available at this time.
+
+### **Conclusion**
+The Affiliate Defense plugin is a simple tool to help you monitor changes to affiliate links within your posts and pages. By following the steps above, you can make the most of its current features and ensure that your affiliate links remain consistent and correct.
+
+If you need further assistance or have any questions, please reach out to the support team through the usual channels.
