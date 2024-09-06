@@ -34,5 +34,5 @@ The plugin compares the current content with the previous version saved in the d
 
 == Upgrade Notice ==
 
-= 1.1.02 =
-* Production release.
+= 1.0.0 =
+* Initial release.

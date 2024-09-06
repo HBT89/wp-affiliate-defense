@@ -2,7 +2,7 @@
 /*
 Plugin Name: Affiliate Link Defender
 Description: A lightweight plugin to monitor changes to affiliate links on pages.
-Version: 1.102
+Version: 1.1.16
 Author: Joshua A. Selvidge
 */
 
@@ -15,7 +15,6 @@ if (!defined('WPINC')) {
 function affiliate_defense_create_table() {
     global $wpdb;
 
-    // Use the WordPress table prefix
     $table_name = $wpdb->prefix . 'affiliate_link_changes';
     $charset_collate = $wpdb->get_charset_collate();
 
@@ -23,6 +22,7 @@ function affiliate_defense_create_table() {
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         post_id bigint(20) NOT NULL,
         changed_links text NOT NULL,
+        previous_links text NOT NULL,
         change_time datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
         PRIMARY KEY  (id)
     ) $charset_collate;";
@@ -31,7 +31,6 @@ function affiliate_defense_create_table() {
     dbDelta($sql);
 }
 
-// Hook the function to the plugin activation
 register_activation_hook(__FILE__, 'affiliate_defense_create_table');
 
 // Include the Alert Handler class file
@@ -71,7 +70,7 @@ function affiliate_defense_admin_page() {
         <h1>Affiliate Defense</h1>
         <p>Welcome to the Affiliate Defense plugin. Here you can monitor affiliate link changes and access logs.</p>
         
-        <!-- Example: Displaying some information -->
+        <!-- Displaying the Affiliate Link Changes Log -->
         <h2>Affiliate Link Changes Log</h2>
         <?php
         global $wpdb;
@@ -81,7 +80,16 @@ function affiliate_defense_admin_page() {
         if ($results) {
             echo '<ul>';
             foreach ($results as $row) {
-                echo '<li>' . esc_html($row->change_time) . ' - ' . esc_html($row->changed_links) . ' (Post ID: ' . esc_html($row->post_id) . ')</li>';
+                // Create a link to the post edit page
+                $post_link = get_edit_post_link($row->post_id);
+                $post_title = get_the_title($row->post_id);
+
+                echo '<li>';
+                echo '<strong>' . esc_html($row->change_time) . '</strong> - ';
+                echo '<a href="' . esc_url($post_link) . '" target="_blank">' . esc_html($post_title) . '</a> - ';
+                echo esc_html($row->changed_links);
+                echo ' (Post ID: ' . esc_html($row->post_id) . ')';
+                echo '</li>';
             }
             echo '</ul>';
         } else {
