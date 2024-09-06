@@ -52,26 +52,27 @@ class Affiliate_Link_Monitor_Alert_Handler {
     }
 
     update_post_meta($post_ID, '_previous_content', $content);
-}
+	}
 
 
     public function log_changed_links($post_ID, $changed_links) {
-    global $wpdb;
-    
-    $table_name = $wpdb->prefix . 'affiliate_link_changes';
-    $log_message = "Changes detected in affiliate links on post ID $post_ID: " . implode(', ', $changed_links);
+		global $wpdb;
 
-    $wpdb->insert(
-        $table_name,
-        array(
-            'post_id' => $post_ID,
-            'changed_links' => implode(', ', $changed_links),
-            'change_time' => current_time('mysql'),
-        )
-    );
+		$table_name = $wpdb->prefix . 'affiliate_link_changes';
 
-    update_option('affiliate_link_change_notice', $log_message);
-}
+		// Insert the new log entry into the database
+		$wpdb->insert(
+			$table_name,
+			array(
+				'post_id' => $post_ID,
+				'changed_links' => implode(', ', $changed_links),
+				'change_time' => current_time('mysql'),
+			)
+		);
+	}
+
+
+
 
 
     public function show_affiliate_link_change_notice() {
